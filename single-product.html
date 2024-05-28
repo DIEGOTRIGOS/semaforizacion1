@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="//code.tidio.co/e3renmrtir4ggikevsddaxew0effhupb.js" async></script>
+</head>
+<body>
+    <header>
+        <section class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="icon">
+                            <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/?lang=es" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="clear"></div>
+        <section class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="index.html"> <img src="img/Logosemaforizacion.png" width="200px" height="100%" > </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="index.html">INICIO</a></li>
+                            <li><a href="#">PRODUCTOS</a></li>
+                            <li><a href="single-blog.html">BLOG</a></li>
+                   
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="cart">
+                            <p>
+                                <i class="fa fa-cart-arrow-down"></i>
+                                <sup><?php echo $cantidad = $_POST['cantidad']; ?></sup> 
+                                &#36;&nbsp;&nbsp;
+                            </p>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="header-part">
+                            <p>INICIO &nbsp;&nbsp;&nbsp;PRODUCTOS &nbsp;&nbsp;&nbsp;<span><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;REDES</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    
+
+<section class="stylish-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-product-slider">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63671.735241963805!2d-73.65034553872826!3d4.124842043148699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2ddfba283211%3A0x537e40041d7b20c2!2sVillavicencio%2C%20Meta!5e0!3m2!1ses-419!2sco!4v1715104612121!5m2!1ses-419!2sco" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+            <div class="col-md-7">
+                <div class="single-product-text">
+                    <h1>Red de semaforización</h1>
+                    <h2>&#36;400.000</h2>
+                    <p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>
+                    <h6>(25789612 Reviews)</h6>
+                    <h3>Ciudades/Departamentos</h3>
+                    <div>
+                        <div id="contenedor_formulario">
+                            <form action="insertar_compras.php" method="POST">
+                                <select name="ciudad">
+                                    <option value="Villavicencio">Villavicencio</option>
+                                    <option value="Bogota D.C">Bogota D.C</option>
+                                    <option value="Valle Del Cauca">Valle Del Cauca</option>
+                                    <option value="Medellin">Medellin</option>
+                                    <option value="Pereira">Pereira</option>
+                                </select>
+                                <input type="number" name="cantidad" value="1" min="0" max="10">
+                                <input type="hidden" name="producto" value="Red de semaforizacion">
+                                <input type="hidden" name="precio" value="400000">
+                                <button type="submit" name="agregar_carrito">AGREGAR AL CARRITO</button>
+                            </form>
+                            <br>
+                            <form action="seleccionar_carrito.php" method="GET">
+                                <button type="submit">VER COMPRA</button>
+                            </form>
+                            <br>
+                        </div>
+                        
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script>
+                            $(document).ready(function(){
+                                $('#formulario_compra').submit(function(e){
+                                    e.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+                        
+                                    // Obtenemos los datos del formulario
+                                    var formData = $(this).serialize();
+                        
+                                    // Realizamos la petición AJAX
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: $(this).attr('action'), // URL a la que se enviarán los datos
+                                        data: formData,
+                                        success: function(response){
+                                            // Maneja la respuesta del servidor aquí
+                                            alert('Compra realizada con éxito');
+                                            // Puedes redirigir al usuario a otra página si lo deseas
+                                            // window.location.href = 'pagina_de_confirmacion.php';
+                                        },
+                                        error: function(xhr, status, error){
+                                            // Maneja los errores de la petición AJAX aquí
+                                            alert('Error al realizar la compra');
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                        
+                        
+                    </div>
+
+                </div>
+                <br>
+                <div class="col-md-4">
+                    <div class="comparte">
+                    <h4><i class="fa fa-heart" aria-hidden="true"></i>Añadir</h4>
+                    <h5 class="love">Categorias:<span>Redes</span></h5>
+                    
+                    <h4><i class="fa fa-heart" aria-hidden="true"></i>Compartenos!</h4> <br>
+                    <p class="icon"><a href="https://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="https://twitter.com/?lang=es"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="https://www.linkedin.com/feed/"><i class="fa fa-linkedin" aria-hidden="true"></i></a><a href="https://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a></p>
+                    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="product_description">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><span class="description">Descripcion</span><span class="review">Reviews(9846511)</span></h2>
+                    <h3>Semaforizacion</h3>
+                    <p>
+                        <b>¡Optimiza tu flujo vehicular con nuestra red de semaforización inteligente!</b><br>
+                        Nuestra red de semaforización inteligente ofrece una solución integral para gestionar eficientemente el tráfico en áreas urbanas y suburbanas. Diseñada para mejorar la movilidad y la seguridad vial, nuestra red de semaforización utiliza tecnología avanzada para coordinar semáforos de manera óptima, minimizando los tiempos de espera y reduciendo la congestión vehicular. <br>
+                        <b>Beneficios</b><br>
+                        1. Fluidez del tráfico: Coordinamos los semáforos para garantizar un flujo vehicular constante y reducir los tiempos de viaje.<br>
+                        2. Seguridad: Priorizamos la seguridad vial, asignando intervalos de paso adecuados para peatones y vehículos, reduciendo así el riesgo de accidentes.<br>
+                        3. Eficiencia energética: Nuestra red utiliza algoritmos inteligentes para optimizar el consumo de energía, reduciendo costos operativos y contribuyendo a la sostenibilidad ambiental. <br>
+
+                        <b>Servicios incluidos:</b>
+                        <br>
+                        1.Diseño personalizado: Adaptamos la configuración de la red a las necesidades específicas de tu área, considerando factores como el volumen de tráfico y los patrones de movilidad.<br>
+                        2.Instalación y configuración: Nuestro equipo de expertos se encarga de la instalación y puesta en marcha de la red, asegurando un funcionamiento óptimo desde el primer día.<br>
+                        3.Mantenimiento y soporte técnico: Ofrecemos servicios de mantenimiento preventivo y correctivo para garantizar el rendimiento continuo de la red. Además, nuestro equipo de soporte técnico está disponible para resolver cualquier inconveniente de manera rápida y eficiente.<br>
+                    
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="related-products">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bar">
+                        <h2>PRÓXIMAMENTE..</h2>
+                        <img src="img/bar.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="s_product">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254508.39475532752!2d-74.27296025439385!3d4.648620548178146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd2da6cb29%3A0x239d635520a33914!2zQm9nb3TDoQ!5e0!3m2!1ses-419!2sco!4v1715105041601!5m2!1ses-419!2sco" width="350" height="495" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            
+                            <h2>NEW!</h2>
+                            <h3>RED NUEVA</h3>
+                            <h4><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>AGREGAR AL CARRITO</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="rate">
+                                    <h3>Bogota D.C</h3>
+                                    <p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>
+                                    <h5>$600.000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="s_product">
+                            <h2>NEW!</h2>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1018856.0614560324!2d-77.28987318532829!3d4.039503128149596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e36f22a860c418f%3A0xeb83e1617a654ca0!2sValle%20del%20Cauca!5e0!3m2!1ses-419!2sco!4v1715105279446!5m2!1ses-419!2sco" width="350" height="495" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            
+                            <h3>RED NUEVA</h3>
+                            <h4><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>AGREGAR AL CARRITO</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="rate">
+                                    <h3>Valle Del Cauca</h3>
+                                    <p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>
+                                    <h5>$900.000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="s_product">
+                            <h2>NEW!</h2>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63458.35966325914!2d-75.62249698785342!3d6.244287165133554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428dfb80fad05%3A0x42137cfcc7b53b56!2sMedell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses-419!2sco!4v1715105185358!5m2!1ses-419!2sco" width="350" height="495" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            
+                            <h3>RED NUEVA</h3>
+                            <h4><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>AGREGAR AL CARRITO</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="rate">
+                                    
+                                    <h3>Medellin</h3>
+                                    <p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>
+                                    <h5>$500.000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="s_product">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63612.71352998375!2d-75.75495748858835!3d4.80529493928404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e388748eb56c1fd%3A0x95b39410f9f1dfbc!2sPereira%2C%20Risaralda!5e0!3m2!1ses-419!2sco!4v1715105605194!5m2!1ses-419!2sco" width="350" height="495" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            
+                            <h2>NEW!</h2>
+                            <h3>RED NUEVA</h3>
+                            <h4><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>AGREGAR AL CARRITO</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="rate">
+                                    <h3>Pereira</h3>
+                                    <p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>
+                                    <h5>$450.000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer_top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 center">
+                    <h2>INFORMACION</h2>
+                    <a href="#"><p><i class="fa fa-circle" aria-hidden="true"></i>Best sellers</p></a>
+                    <a href="#"><p><i class="fa fa-circle" aria-hidden="true"></i>Best sellers</p></a>
+                    <a href="#"><p><i class="fa fa-circle" aria-hidden="true"></i>Best sellers</p></a>
+                    <a href="#"><p><i class="fa fa-circle" aria-hidden="true"></i>Best sellers</p></a>
+                    <a href="#"><p><i class="fa fa-circle" aria-hidden="true"></i>Best sellers</p></a>
+                </div>
+                <div class="col-md-5">
+                    <div class="footer-contact">
+                        <h2>CONTACTANOS</h2>
+                        <a href="https://maps.app.goo.gl/nQ1ausEkev8BgaLCA" target="_blank"><p><i class="fa fa-map-marker" aria-hidden="true"></i>Colombia</p></a>
+                        <a href="whatsapp://send?phone=+573204983996"><p><i class="fa fa-phone" aria-hidden="true"></i>+57 3204983996</p></a>
+                        <a href="mailto:Semaforizacion@semaforizacion.com"><p><i class="fa fa-envelope" aria-hidden="true"></i>Semaforizacion@semaforizacion.com </p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="footer_bottom">
+       <div class="footer_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="copy_txt">
+                        <a href="index.html"><p><i aria-hidden="true"></i>Copyright © 2024 Diseñado por <span> Semaforizacion</span></p></a>
+                      
+                       
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="footer_logo">
+                        <img src="img/fedex.png">
+                        <img src="img/master-card.png">
+                        <img src="img/paypal.png">
+                        <img src="img/visa.png">
+                        <img src="img/american-express.png">
+                        <img src="img/dhl.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>  
+<script src="js/bootstrap.min.js"></script>  
+<script src="js/active.js"></script>  
+</body>
+</html>
